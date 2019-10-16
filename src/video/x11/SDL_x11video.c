@@ -1088,7 +1088,7 @@ static int X11_CreateWindow(_THIS, SDL_Surface *screen,
 		}
 	}
 
-#if 0 /* This is an experiment - are the graphics faster now? - nope. */
+#if 1 /* This is an experiment - are the graphics faster now? - nope. */
 	if ( SDL_getenv("SDL_VIDEO_X11_BACKINGSTORE") )
 #endif
 	/* Cache the window in the server, when possible */
