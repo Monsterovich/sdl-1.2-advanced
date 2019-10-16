@@ -390,6 +390,8 @@ void SDL_PumpEvents(void)
 
 /* Public functions */
 
+extern SDL_Surface *sdl_surface;
+
 int SDL_PollEvent (SDL_Event *event)
 {
 	SDL_PumpEvents();
@@ -397,6 +399,29 @@ int SDL_PollEvent (SDL_Event *event)
 	/* We can't return -1, just return 0 (no event) on error */
 	if ( SDL_PeepEvents(event, 1, SDL_GETEVENT, SDL_ALLEVENTS) <= 0 )
 		return 0;
+	switch (event->type) {
+		case SDL_KEYDOWN: 
+		{
+			if (!sdl_surface || !(event->key.keysym.mod & KMOD_ALT))
+				break;
+			if (event->key.keysym.sym == SDLK_RETURN)
+			{
+				SDL_WM_ToggleFullScreen(sdl_surface);
+				return 0; // prevent other input
+			}
+			if (event->key.keysym.sym == SDLK_F4)
+			{
+				event->type = SDL_QUIT;
+				return 1; // here function must return 1 to process SDL_QUIT outside this function
+			}
+			if (event->key.keysym.sym == SDLK_TAB)
+			{
+				SDL_WM_IconifyWindow();
+				return 0; // prevent other input
+			}
+			break;
+		}
+	}
 	return 1;
 }
 

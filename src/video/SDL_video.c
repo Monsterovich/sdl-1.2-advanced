@@ -577,6 +577,9 @@ static void SDL_CreateShadowSurface(int depth)
 	extern int sysevents_mouse_pressed;
 #endif
 
+// [M] My code
+SDL_Surface *sdl_surface = 0;
+
 /*
  * Set the requested video mode, allocating a shadow buffer if necessary.
  */
@@ -710,7 +713,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 		/* Sanity check */
 		if ( (mode->w < width) || (mode->h < height) ) {
 			SDL_SetError("Video mode smaller than requested");
-			return(NULL);
+			sdl_surface = NULL;
+			return sdl_surface;
 		}
 
 		/* If we have a palettized surface, create a default palette */
@@ -748,7 +752,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 
 	/* If we failed setting a video mode, return NULL... (Uh Oh!) */
 	if ( mode == NULL ) {
-		return(NULL);
+		sdl_surface = NULL;
+		return sdl_surface;
 	}
 
 	/* If there is no window manager, set the SDL_NOFRAME flag */
@@ -781,7 +786,7 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
         video->func = SDL_GL_GetProcAddress(#func); \
         if ( ! video->func ) { \
             SDL_SetError("Couldn't load GL function %s: %s\n", #func, SDL_GetError()); \
-        return(NULL); \
+        sdl_surface = NULL; return sdl_surface; \
         } \
     } while ( 0 );
 
@@ -796,7 +801,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 	if ( (video->screen->flags & SDL_OPENGL) &&
 	      video->GL_MakeCurrent ) {
 		if ( video->GL_MakeCurrent(this) < 0 ) {
-			return(NULL);
+			sdl_surface = NULL;
+			return sdl_surface;
 		}
 	}
 
@@ -850,7 +856,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 				);
 		}
 		if ( ! SDL_VideoSurface ) {
-			return(NULL);
+			sdl_surface = NULL;
+			return sdl_surface;
 		}
 		SDL_VideoSurface->flags = mode->flags | SDL_OPENGLBLIT;
 
@@ -907,7 +914,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 		SDL_CreateShadowSurface(bpp);
 		if ( SDL_ShadowSurface == NULL ) {
 			SDL_SetError("Couldn't create shadow surface");
-			return(NULL);
+			sdl_surface = NULL;
+			return sdl_surface;
 		}
 		SDL_PublicSurface = SDL_ShadowSurface;
 	} else {
@@ -918,7 +926,8 @@ SDL_Surface * SDL_SetVideoMode (int width, int height, int bpp, Uint32 flags)
 	video->info.current_h = SDL_VideoSurface->h;
 
 	/* We're done! */
-	return(SDL_PublicSurface);
+	sdl_surface = SDL_PublicSurface;
+	return sdl_surface;
 }
 
 /* 

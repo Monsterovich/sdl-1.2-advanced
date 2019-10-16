@@ -1,0 +1,108 @@
+build/include
+include
+src
+src/audio
+src/audio/alsa
+src/audio/arts
+src/audio/baudio
+src/audio/bsd
+src/audio/dart
+src/audio/dc
+src/audio/disk
+src/audio/dma
+src/audio/dmedia
+src/audio/dsp
+src/audio/dummy
+src/audio/esd
+src/audio/macosx
+src/audio/macrom
+src/audio/mint
+src/audio/mme
+src/audio/nas
+src/audio/nds
+src/audio/nto
+src/audio/paudio
+src/audio/pulse
+src/audio/sun
+src/audio/symbian
+src/audio/ums
+src/audio/windib
+src/audio/windx5
+src/cdrom
+src/cdrom/macos
+src/cdrom/macosx
+src/events
+src/hermes
+src/joystick
+src/main/beos
+src/main/macosx
+src/main/symbian/EKA2
+src/thread
+src/thread/beos
+src/thread/dc
+src/thread/generic
+src/thread/irix
+src/thread/os2
+src/thread/pth
+src/thread/pthread
+src/thread/riscos
+src/thread/symbian
+src/thread/win32
+src/timer
+src/timer/macos
+src/timer/mint
+src/video
+src/video/aalib
+src/video/ataricommon
+src/video/bwindow
+src/video/caca
+src/video/dc
+src/video/dga
+src/video/directfb
+src/video/dummy
+src/video/fbcon
+src/video/gapi
+src/video/gem
+src/video/ggi
+src/video/ipod
+src/video/maccommon
+src/video/macdsp
+src/video/macrom
+src/video/nanox
+src/video/nds
+src/video/os2fslib
+src/video/photon
+src/video/picogui
+src/video/ps2gs
+src/video/ps3
+src/video/ps3/spulibs
+src/video/qtopia
+src/video/quartz
+src/video/riscos
+src/video/svga
+src/video/symbian
+src/video/symbian/EKA1
+src/video/symbian/EKA2
+src/video/vgl
+src/video/wincommon
+src/video/windib
+src/video/windx5
+src/video/wscons
+src/video/x11
+src/video/xbios
+src/video/Xext/extensions
+src/video/Xext/Xv
+VisualC/SDL
+Xcode/SDLTest
+Xcode/TemplatesForXcodeLeopard/SDL Application
+Xcode/TemplatesForXcodeLeopard/SDL Cocoa Application
+Xcode/TemplatesForXcodeLeopard/SDL OpenGL Application
+Xcode/TemplatesForXcodeLeopard/SDL OpenGL Application/atlantis
+Xcode/TemplatesForXcodeSnowLeopard/SDL Application
+Xcode/TemplatesForXcodeSnowLeopard/SDL Cocoa Application
+Xcode/TemplatesForXcodeSnowLeopard/SDL OpenGL Application
+Xcode/TemplatesForXcodeSnowLeopard/SDL OpenGL Application/atlantis
+Xcode/TemplatesForXcodeTiger/SDL Application
+Xcode/TemplatesForXcodeTiger/SDL Cocoa Application
+Xcode/TemplatesForXcodeTiger/SDL OpenGL Application
+Xcode/TemplatesForXcodeTiger/SDL OpenGL Application/atlantis
