@@ -28,7 +28,7 @@
 #include "SDL_blit.h"
 #include "SDL_pixels_c.h"
 #include "SDL_cursor_c.h"
-#include "../events/SDL_sysevents.h"
+#include "../events/SDL_sysevents.h" 
 #include "../events/SDL_events_c.h"
 
 /* Available video drivers */
@@ -236,8 +236,13 @@ int SDL_VideoInit (const char *driver_name, Uint32 flags)
 	video->gl_config.accum_blue_size = 0;
 	video->gl_config.accum_alpha_size = 0;
 	video->gl_config.stereo = 0;
-	video->gl_config.multisamplebuffers = 0;
-	video->gl_config.multisamplesamples = 0;
+	char *multisampling = getenv("SDL_MULTISAMPLING");
+	int samples = 4;
+	if (multisampling != NULL)
+		samples = atoi(multisampling);
+	video->gl_config.multisamplebuffers = samples > 0;
+	video->gl_config.multisamplesamples = samples;
+	printf("[SDL] Multisamping set to %d\n", samples);
 	video->gl_config.accelerated = -1; /* not known, don't set */
 	video->gl_config.swap_control = -1; /* not known, don't set */
 	
