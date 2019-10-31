@@ -237,7 +237,7 @@ int SDL_VideoInit (const char *driver_name, Uint32 flags)
 	video->gl_config.accum_alpha_size = 0;
 	video->gl_config.stereo = 0;
 	char *multisampling = getenv("SDL_MULTISAMPLING");
-	int samples = 4;
+	int samples = 0;
 	if (multisampling != NULL)
 		samples = atoi(multisampling);
 	video->gl_config.multisamplebuffers = samples > 0;
